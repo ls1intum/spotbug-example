@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class TUMOnline {
 
 	private ArrayList<Course> registeredCourses;
+	
 	private ArrayList<Student> enrolledStudents;
 
 	public TUMOnline() {
