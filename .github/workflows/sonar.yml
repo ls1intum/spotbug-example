@@ -1,6 +1,10 @@
 name: SonarCloud
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -20,7 +24,7 @@ jobs:
         restore-keys: |
           spotless-example-
     - name: Analyze with SonarCloud
-      run: ./mvn -B verify sonar:sonar -Dsonar.projectKey=spotbug-example -Dsonar.organization=ls1intum -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+      run: mvn -B verify sonar:sonar -Dsonar.projectKey=spotbug-example -Dsonar.organization=ls1intum -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
